@@ -590,14 +590,7 @@
       number.append(el('span', 'course-no', String(i + 1).padStart(2, '0')), chip);
       top.append(number, el('span', 'course-tag', `#${tag}`));
       const courseTitle = el('h3');
-      if (title.includes('：')) {
-        const phrases = title.split('：');
-        courseTitle.replaceChildren(...phrases.map((phrase, index) =>
-          el('span', 'ph', `${phrase}${index < phrases.length - 1 ? '：' : ''}`)
-        ));
-      } else {
-        courseTitle.textContent = title;
-      }
+      courseTitle.textContent = title;
       card.append(top, courseTitle, el('p', null, desc));
       return card;
     }));
