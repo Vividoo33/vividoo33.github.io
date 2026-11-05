@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400..700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,11 +17,11 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#top" aria-label="Vividoo 首頁">
-        <svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="17" fill="#429e9d"/><path d="M10 12 L18 26 L26 12" fill="none" stroke="#F4EEE5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="26" cy="11" r="2.5" fill="#C8A273"/></svg>
+        <svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="17" fill="#429e9d"/><path d="M10 12 L18 26 L26 12" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="26" cy="11" r="2.5" fill="#1F5A59"/></svg>
         <span>Vividoo</span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="開啟選單">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <i class="fi fi-rr-menu-burger" aria-hidden="true"></i>
       </button>
       <nav id="site-nav" class="site-nav" aria-label="主要導覽">
         <a href="#services">自動化服務</a>
@@ -28,7 +29,7 @@
         <a href="#courses">課程</a>
         <a href="#cases">成功案例</a>
         <a href="#about">關於我們</a>
-        <a class="btn btn-primary btn-sm" href="#contact">立即諮詢</a>
+        <a class="btn btn-primary btn-sm" href="#contact">立即諮詢 <i class="fi fi-rr-arrow-small-right" aria-hidden="true"></i></a>
       </nav>
     </div>
   </header>
@@ -36,23 +37,29 @@
   <main id="main">
     <!-- HERO -->
     <section id="top" class="hero">
-      <div class="container hero-inner">
-        <div class="hero-copy">
-          <span class="eyebrow-pill">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
-            AI 案例・教育訓練・自動化
-          </span>
-          <h1>帶團隊出發，<br><span class="accent">探索 AI 的下一站</span></h1>
-          <p class="lead">Vividoo 像一間 AI 旅行社：我們追蹤全球已經真正上線的 AI 應用，把別人走過的路整理成你的行程——從案例導入、教育訓練到流程自動化，陪團隊一路走到能自己探索。</p>
-          <div class="btn-row">
-            <a class="btn btn-primary" href="#contact">開始規劃旅程
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-            <a class="btn btn-outline" href="#skills">看 AI 技能菜單</a>
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-copy" data-reveal>
+            <span class="eyebrow-pill">
+              <i class="fi fi-rr-rocket-lunch" aria-hidden="true"></i>
+              AI 案例・教育訓練・自動化
+            </span>
+            <h1><span class="hero-title-line"><span class="ph">帶團隊出發，</span></span><span class="hero-title-line accent"><span class="ph">探索 AI 的下一站</span></span></h1>
+            <p class="lead"><span class="ph">Vividoo 像一間 AI 旅行社：</span><span class="ph">我們追蹤全球已經真正上線的 AI 應用，</span><span class="ph">把別人走過的路整理成你的行程——</span><span class="ph">從案例導入、教育訓練到流程自動化，</span><span class="ph">陪團隊一路走到能自己探索。</span></p>
+            <div class="btn-row">
+              <a class="btn btn-primary" href="#contact">開始規劃旅程 <i class="fi fi-rr-arrow-small-right" aria-hidden="true"></i>
+              </a>
+              <a class="btn btn-outline" href="#skills"><i class="fi fi-rr-sparkles" aria-hidden="true"></i> 看 AI 技能菜單</a>
+            </div>
           </div>
+          <figure class="hero-media" data-reveal>
+            <div class="hero-image-motion">
+              <img src="assets/img/hero.jpg" width="1536" height="1024" alt="半透明青綠玻璃球連結多個懸浮方框，呈現抽象科技網絡" fetchpriority="high" decoding="async">
+            </div>
+          </figure>
         </div>
 
-        <aside class="pass" aria-label="AI 登機證">
+        <aside class="pass" aria-label="AI 登機證" data-reveal>
           <div class="pass-head">
             <span class="pass-title">AI Boarding Pass</span>
             <span class="pass-code">VVD · 001</span>
@@ -60,13 +67,13 @@
           <div class="pass-body">
             <div class="pass-route">
               <div>
-                <span class="pass-label">出發</span>
+                <span class="pass-label"><i class="fi fi-rr-time-fast" aria-hidden="true"></i> 出發</span>
                 <span class="pass-city">NOW</span>
                 <span class="pass-sub">手動流程</span>
               </div>
-              <svg width="90" height="24" viewBox="0 0 90 24" fill="none" aria-hidden="true"><path d="M2 12h80" stroke="#C8A273" stroke-width="2" stroke-dasharray="4 5"/><path d="M76 6l8 6-8 6" stroke="#429e9d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="pass-flight" aria-hidden="true"><i class="fi fi-rr-plane-departure" aria-hidden="true"></i></span>
               <div class="pass-right">
-                <span class="pass-label">抵達</span>
+                <span class="pass-label"><i class="fi fi-rr-robot" aria-hidden="true"></i> 抵達</span>
                 <span class="pass-city accent">AI</span>
                 <span class="pass-sub">智慧工作流</span>
               </div>
@@ -90,38 +97,41 @@
     <section id="modules" class="section container modules">
       <div class="section-intro section-intro-wide">
         <span class="kicker">CORE MODULES</span>
-        <h2>四大核心模組</h2>
-        <p>全方位解決您的辦公室痛點，提升營運效率超過 400%。</p>
+        <h2><span class="ph">四大核心模組</span></h2>
+        <p><span class="ph">全方位解決您的辦公室痛點，</span><span class="ph">提升營運效率超過 400%。</span></p>
       </div>
       <div class="module-grid">
-        <article class="module-card">
-          <h3>自動化服務</h3>
+        <article class="module-card" data-reveal>
+          <div class="module-media"><img src="assets/img/module-automation.jpg" width="1122" height="1402" loading="lazy" decoding="async" alt="青綠玻璃球沿曲線連接堆疊薄片與散落方片的抽象圖像"></div>
+          <h3><span class="icon-chip"><i class="fi fi-rr-robot" aria-hidden="true"></i></span><span class="heading-copy"><span class="ph">自動化服務</span></span></h3>
           <p>智能文件處理與多平台自動化</p>
           <ul>
-            <li>智能文件處理</li>
-            <li>多平台自動上架</li>
-            <li>智能庫存分配</li>
-            <li>智能訂單管理</li>
+            <li><i class="fi fi-rr-check-circle" aria-hidden="true"></i>智能文件處理</li>
+            <li><i class="fi fi-rr-check-circle" aria-hidden="true"></i>多平台自動上架</li>
+            <li><i class="fi fi-rr-check-circle" aria-hidden="true"></i>智能庫存分配</li>
+            <li><i class="fi fi-rr-check-circle" aria-hidden="true"></i>智能訂單管理</li>
           </ul>
         </article>
-        <article class="module-card">
-          <h3>課程</h3>
+        <article class="module-card" data-reveal>
+          <div class="module-media"><img src="assets/img/module-courses.jpg" width="1122" height="1402" loading="lazy" decoding="async" alt="青綠玻璃球置於一列逐步升高的半透明方形階梯上"></div>
+          <h3><span class="icon-chip"><i class="fi fi-rr-graduation-cap" aria-hidden="true"></i></span><span class="heading-copy"><span class="ph">課程</span></span></h3>
           <p>AI 驅動的創意與協作解決方案</p>
           <ul>
-            <li>內容創意行銷</li>
-            <li>智能客服</li>
-            <li>AI 會議助理</li>
-            <li>自動生成圖表</li>
+            <li><i class="fi fi-rr-check-circle" aria-hidden="true"></i>內容創意行銷</li>
+            <li><i class="fi fi-rr-check-circle" aria-hidden="true"></i>智能客服</li>
+            <li><i class="fi fi-rr-check-circle" aria-hidden="true"></i>AI 會議助理</li>
+            <li><i class="fi fi-rr-check-circle" aria-hidden="true"></i>自動生成圖表</li>
           </ul>
         </article>
-        <article class="module-card">
-          <h3>顧問服務</h3>
+        <article class="module-card" data-reveal>
+          <div class="module-media"><img src="assets/img/module-consulting.jpg" width="1122" height="1402" loading="lazy" decoding="async" alt="由半透明方柱組成的上升長條圖，最右側柱體呈青綠色"></div>
+          <h3><span class="icon-chip"><i class="fi fi-rr-chart-histogram" aria-hidden="true"></i></span><span class="heading-copy"><span class="ph">顧問服務</span></span></h3>
           <p>數據驅動的智慧決策支援</p>
           <ul>
-            <li>流程梳理、優化、自動化</li>
-            <li>營運報表分析</li>
-            <li>市場與競品監測</li>
-            <li>KPI 報表生成</li>
+            <li><i class="fi fi-rr-check-circle" aria-hidden="true"></i>流程梳理、優化、自動化</li>
+            <li><i class="fi fi-rr-check-circle" aria-hidden="true"></i>營運報表分析</li>
+            <li><i class="fi fi-rr-check-circle" aria-hidden="true"></i>市場與競品監測</li>
+            <li><i class="fi fi-rr-check-circle" aria-hidden="true"></i>KPI 報表生成</li>
           </ul>
         </article>
       </div>
@@ -129,15 +139,19 @@
 
     <!-- AUTOMATION SERVICES -->
     <section id="services" class="services">
-      <div class="container section">
+      <div class="container section service-layout">
+        <div class="service-aside" data-reveal>
         <div class="section-intro section-intro-wide">
           <span class="kicker kicker-teal">AUTOMATION SERVICES</span>
-          <h2>企業流程再造與智慧自動化</h2>
-          <p>透過自動化技術，優化日常營運流程。</p>
+          <h2><span class="ph">企業流程再造</span><span class="ph">與智慧自動化</span></h2>
+          <p><span class="ph">透過自動化技術，</span><span class="ph">優化日常營運流程。</span></p>
         </div>
+          <div class="services-image"><img src="assets/img/services.jpg" width="1672" height="941" loading="lazy" decoding="async" alt="五個半透明圓角方框由青綠細線與小球串連成一列"></div>
+        </div>
+        <div class="service-content">
         <div class="service-grid">
-          <article class="service-card">
-            <h3>CRM 客戶關係管理全自動化</h3>
+          <article class="service-card" data-reveal>
+            <h3><span class="icon-chip"><i class="fi fi-rr-users-alt" aria-hidden="true"></i></span><span class="heading-copy"><span class="ph">CRM 客戶關係管理</span><span class="ph">全自動化</span></span></h3>
             <p>從客戶建檔到售後服務的智慧化管理流程</p>
             <ul>
               <li>新客戶資料自動建檔與分類</li>
@@ -145,8 +159,8 @@
               <li>客戶互動紀錄自動同步與更新</li>
             </ul>
           </article>
-          <article class="service-card">
-            <h3>電商營運自動化</h3>
+          <article class="service-card" data-reveal>
+            <h3><span class="icon-chip"><i class="fi fi-rr-shopping-cart" aria-hidden="true"></i></span><span class="heading-copy"><span class="ph">電商營運</span><span class="ph">自動化</span></span></h3>
             <p>跨平台電商營運流程的智慧整合與自動化管理</p>
             <ul>
               <li>商品資訊自動上下架與庫存同步調整</li>
@@ -154,8 +168,8 @@
               <li>物流狀態自動追蹤與更新</li>
             </ul>
           </article>
-          <article class="service-card">
-            <h3>財會流程自動化</h3>
+          <article class="service-card" data-reveal>
+            <h3><span class="icon-chip"><i class="fi fi-rr-coins" aria-hidden="true"></i></span><span class="heading-copy"><span class="ph">財會流程</span><span class="ph">自動化</span></span></h3>
             <p>財務會計作業的智慧化處理與自動對帳</p>
             <ul>
               <li>銀行對帳與會計帳務自動核對</li>
@@ -163,16 +177,16 @@
               <li>應收應付帳款自動提醒與追蹤</li>
             </ul>
           </article>
-          <article class="service-card">
-            <h3>供應鏈流程優化</h3>
+          <article class="service-card" data-reveal>
+            <h3><span class="icon-chip"><i class="fi fi-rr-truck-side" aria-hidden="true"></i></span><span class="heading-copy"><span class="ph">供應鏈流程</span><span class="ph">優化</span></span></h3>
             <p>供應鏈端到端的自動化管理</p>
             <ul>
               <li>供應商交期與庫存狀態自動監控</li>
               <li>採購需求與訂單自動化處理</li>
             </ul>
           </article>
-          <article class="service-card">
-            <h3>數據自動化</h3>
+          <article class="service-card" data-reveal>
+            <h3><span class="icon-chip"><i class="fi fi-rr-database" aria-hidden="true"></i></span><span class="heading-copy"><span class="ph">數據自動化</span></span></h3>
             <p>跨部門數據整合與自動化分析</p>
             <ul>
               <li>自動化蒐集與整合跨部門營運數據</li>
@@ -182,39 +196,40 @@
         </div>
 
         <div class="process">
-          <h3>我們的服務流程</h3>
+          <h3><span class="ph">我們的服務流程</span></h3>
           <ol class="process-steps">
-            <li><span class="process-no">01</span><strong>需求分析</strong><span>深入了解客戶需求，分析現有流程與痛點</span></li>
-            <li><span class="process-no">02</span><strong>方案設計</strong><span>量身訂製最適合的解決方案與實作計畫</span></li>
-            <li><span class="process-no">03</span><strong>建置導入</strong><span>專業團隊執行導入，確保品質與進度</span></li>
-            <li><span class="process-no">04</span><strong>營運維護</strong><span>提供持續的維護服務，確保穩定運行</span></li>
+            <li><span class="process-icon"><i class="fi fi-rr-search" aria-hidden="true"></i></span><strong>需求分析</strong><span>深入了解客戶需求，分析現有流程與痛點</span></li>
+            <li><span class="process-icon"><i class="fi fi-rr-bulb" aria-hidden="true"></i></span><strong>方案設計</strong><span>量身訂製最適合的解決方案與實作計畫</span></li>
+            <li><span class="process-icon"><i class="fi fi-rr-settings" aria-hidden="true"></i></span><strong>建置導入</strong><span>專業團隊執行導入，確保品質與進度</span></li>
+            <li><span class="process-icon"><i class="fi fi-rr-shield-check" aria-hidden="true"></i></span><strong>營運維護</strong><span>提供持續的維護服務，確保穩定運行</span></li>
           </ol>
+        </div>
         </div>
       </div>
     </section>
 
     <!-- SKILL MENU -->
-    <section id="skills" class="section container">
+    <section id="skills" class="section container" data-reveal>
       <div class="section-head">
         <div class="section-intro">
           <span class="kicker">SKILL MENU</span>
-          <h2>AI 技能菜單：ChatGPT × Claude × Gemini</h2>
-          <p>為電商從業人員與一般上班族精選 32 個最具商業價值的 AI 技能。每個技能都預先設定好「系統指令（Instructions）」與「背景知識庫（Knowledge）」，把數據分析、競品研究與行政庶務變成<strong class="hl">丟資料進去，就能直接拿結果</strong>。</p>
+          <h2><span class="ph">AI 技能菜單：</span><span class="ph">ChatGPT × Claude × Gemini</span></h2>
+          <p><span class="ph">為電商從業人員與一般上班族</span><span class="ph">精選 32 個最具商業價值的 AI 技能。</span>每個技能都預先設定好「系統指令（Instructions）」與「背景知識庫（Knowledge）」，把數據分析、競品研究與行政庶務變成<strong class="hl">丟資料進去，就能直接拿結果</strong>。</p>
           <div class="platform-row" aria-label="支援平台">
-            <span class="platform platform-gpt">ChatGPT・Skills</span>
-            <span class="platform platform-claude">Claude・Skills</span>
-            <span class="platform platform-gemini">Gemini・Skills</span>
+            <span class="platform platform-gpt"><i class="fi fi-rr-sparkles" aria-hidden="true"></i> ChatGPT・Skills</span>
+            <span class="platform platform-claude"><i class="fi fi-rr-sparkles" aria-hidden="true"></i> Claude・Skills</span>
+            <span class="platform platform-gemini"><i class="fi fi-rr-sparkles" aria-hidden="true"></i> Gemini・Skills</span>
           </div>
         </div>
         <div class="filter-group" role="group" aria-label="篩選技能類別">
-          <button type="button" class="pill" data-filter="all" aria-pressed="true">全部 32</button>
-          <button type="button" class="pill" data-filter="data" aria-pressed="false">數據分析</button>
-          <button type="button" class="pill" data-filter="finance" aria-pressed="false">財務管理</button>
-          <button type="button" class="pill" data-filter="ads" aria-pressed="false">廣告與行銷</button>
-          <button type="button" class="pill" data-filter="product" aria-pressed="false">競品與商品</button>
-          <button type="button" class="pill" data-filter="service" aria-pressed="false">客服</button>
-          <button type="button" class="pill" data-filter="office" aria-pressed="false">辦公室協作</button>
-          <button type="button" class="pill" data-filter="personal" aria-pressed="false">個人助理</button>
+          <button type="button" class="pill" data-filter="all" aria-pressed="true"><i class="fi fi-rr-layers" aria-hidden="true"></i>全部 32</button>
+          <button type="button" class="pill" data-filter="data" aria-pressed="false"><i class="fi fi-rr-chart-histogram" aria-hidden="true"></i>數據分析</button>
+          <button type="button" class="pill" data-filter="finance" aria-pressed="false"><i class="fi fi-rr-wallet" aria-hidden="true"></i>財務管理</button>
+          <button type="button" class="pill" data-filter="ads" aria-pressed="false"><i class="fi fi-rr-megaphone" aria-hidden="true"></i>廣告與行銷</button>
+          <button type="button" class="pill" data-filter="product" aria-pressed="false"><i class="fi fi-rr-search" aria-hidden="true"></i>競品與商品</button>
+          <button type="button" class="pill" data-filter="service" aria-pressed="false"><i class="fi fi-rr-headset" aria-hidden="true"></i>客服</button>
+          <button type="button" class="pill" data-filter="office" aria-pressed="false"><i class="fi fi-rr-briefcase" aria-hidden="true"></i>辦公室協作</button>
+          <button type="button" class="pill" data-filter="personal" aria-pressed="false"><i class="fi fi-rr-user" aria-hidden="true"></i>個人助理</button>
         </div>
       </div>
       <div id="skill-sections"></div>
@@ -226,20 +241,20 @@
             <span class="sd-group" id="sd-group"></span>
           </div>
           <button type="button" class="sd-close" id="sd-close" aria-label="關閉">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+            <i class="fi fi-rr-cross-small" aria-hidden="true"></i>
           </button>
         </div>
         <h3 id="sd-title"></h3>
         <div class="sd-tags" id="sd-tags"></div>
         <dl class="sd-spec">
-          <dt><span class="sd-dot sd-dot-pain"></span>痛點解決</dt>
+          <dt><i class="fi fi-rr-target" aria-hidden="true"></i>痛點解決</dt>
           <dd id="sd-pain"></dd>
-          <dt><span class="sd-dot sd-dot-know"></span>知識庫預載 Knowledge</dt>
+          <dt><i class="fi fi-rr-book-open-cover" aria-hidden="true"></i>知識庫預載 Knowledge</dt>
           <dd id="sd-knowledge"></dd>
-          <dt><span class="sd-dot sd-dot-skill"></span>核心技能 Skill</dt>
+          <dt><i class="fi fi-rr-magic-wand" aria-hidden="true"></i>核心技能 Skill</dt>
           <dd id="sd-skill"></dd>
         </dl>
-        <a class="btn btn-primary btn-block" href="#booking" id="sd-cta">預約導入這個技能</a>
+        <a class="btn btn-primary btn-block" href="#booking" id="sd-cta">預約導入這個技能 <i class="fi fi-rr-arrow-small-right" aria-hidden="true"></i></a>
       </dialog>
       <p class="disclaimer">每個技能皆可依貴公司的報表格式、品牌語氣與內部規範客製知識庫；知識庫內容由貴公司提供，客戶個資請先去識別化。</p>
     </section>
@@ -249,12 +264,15 @@
       <div class="container section">
         <div class="section-intro section-intro-wide">
           <span class="kicker">COURSES</span>
-          <h2>AI 自動化課程與企業內訓</h2>
-          <p>掌握最新 AI 工具與自動化技術，提升工作效率；從 AI 工具應用到自動化流程，為您的團隊量身打造專業培訓。</p>
+          <h2><span class="ph">AI 自動化課程</span><span class="ph">與企業內訓</span></h2>
+          <p><span class="ph">掌握最新 AI 工具與自動化技術，</span><span class="ph">提升工作效率；</span><span class="ph">從 AI 工具應用到自動化流程，</span><span class="ph">為您的團隊量身打造專業培訓。</span></p>
         </div>
-        <div class="filter-group course-tabs" role="group" aria-label="課程類別">
-          <button type="button" class="pill" data-course="online" aria-pressed="true">課程</button>
-          <button type="button" class="pill" data-course="office" aria-pressed="false">企業內訓・上班族</button>
+        <div class="course-tabs-shell">
+          <div class="filter-group course-tabs" role="group" aria-label="課程類別">
+            <span class="course-indicator" aria-hidden="true"></span>
+            <button type="button" class="pill" data-course="online" aria-pressed="true"><i class="fi fi-rr-play-alt" aria-hidden="true"></i>課程</button>
+            <button type="button" class="pill" data-course="office" aria-pressed="false"><i class="fi fi-rr-briefcase" aria-hidden="true"></i>企業內訓・上班族</button>
+          </div>
         </div>
         <p class="result-count" id="course-count" aria-live="polite"></p>
         <div class="course-grid" id="course-grid"></div>
@@ -265,28 +283,28 @@
     <section id="cases" class="section container">
       <div class="section-intro section-intro-wide">
         <span class="kicker">SUCCESS STORIES</span>
-        <h2>成功案例</h2>
-        <p>透過實際案例，了解我們如何協助企業成功實現數位轉型。</p>
+        <h2><span class="ph">成功案例</span></h2>
+        <p><span class="ph">透過實際案例，</span><span class="ph">了解我們如何協助企業成功實現數位轉型。</span></p>
       </div>
       <div class="case-grid">
-        <article class="case-card">
-          <div class="case-head"><h3>快時尚電商</h3><span class="case-tag">電商</span></div>
+        <article class="case-card" data-reveal>
+          <div class="case-head"><h3><span class="ph">快時尚電商</span></h3><span class="case-tag">電商</span></div>
           <dl>
             <dt>挑戰</dt><dd>訂單處理繁瑣，多平台管理困難，客服回覆速度慢</dd>
             <dt>解決方案</dt><dd>導入電商自動化，整合訂單管理與智能客服</dd>
             <dt>成果</dt><dd class="case-result">訂單處理效率提升 60%，客戶滿意度提升 45%</dd>
           </dl>
         </article>
-        <article class="case-card">
-          <div class="case-head"><h3>樂手巢</h3><span class="case-tag">教育培訓</span></div>
+        <article class="case-card" data-reveal>
+          <div class="case-head"><h3><span class="ph">樂手巢</span></h3><span class="case-tag">教育培訓</span></div>
           <dl>
             <dt>挑戰</dt><dd>課程安排混亂，學員管理不便，缺乏線上互動</dd>
             <dt>解決方案</dt><dd>建置線上教學平台，整合課程管理與學習追蹤</dd>
             <dt>成果</dt><dd class="case-result">學員報名率增加 50%，教學效率提升 40%</dd>
           </dl>
         </article>
-        <article class="case-card">
-          <div class="case-head"><h3>盛發服飾</h3><span class="case-tag">服飾業</span></div>
+        <article class="case-card" data-reveal>
+          <div class="case-head"><h3><span class="ph">盛發服飾</span></h3><span class="case-tag">服飾業</span></div>
           <dl>
             <dt>挑戰</dt><dd>庫存管理混亂，財務流程繁瑣，客戶資料分散</dd>
             <dt>解決方案</dt><dd>導入企業自動化，整合庫存、財務與客戶管理</dd>
@@ -301,7 +319,7 @@
       <div class="container booking-inner">
         <div class="booking-copy">
           <span class="kicker kicker-teal">BOOKING PREVIEW</span>
-          <h2>三步驟，預訂你的第一段行程</h2>
+          <h2><span class="ph">三步驟，</span><span class="ph">預訂你的第一段行程</span></h2>
           <p>選擇行程類型、告訴我們團隊規模與上課形式，我們會回覆專屬的行程建議與報價。</p>
           <ol class="steps">
             <li><span class="step-num step-teal">1</span>選擇技能包：電商、辦公室，或搭配教育訓練</li>
@@ -335,14 +353,13 @@
           </div>
 
           <div class="summary" aria-live="polite">
-            <div><span>行程</span><strong id="sum-service"></strong></div>
-            <div><span>團隊／形式</span><strong id="sum-team"></strong></div>
-            <div><span>包含技能</span><strong id="sum-ref"></strong></div>
+            <div><span><i class="fi fi-rr-list-check" aria-hidden="true"></i>行程</span><strong id="sum-service"></strong></div>
+            <div><span><i class="fi fi-rr-people-group" aria-hidden="true"></i>團隊／形式</span><strong id="sum-team"></strong></div>
+            <div><span><i class="fi fi-rr-layers" aria-hidden="true"></i>包含技能</span><strong id="sum-ref"></strong></div>
             <div class="summary-total"><span>預估費用</span><strong>依需求報價</strong></div>
           </div>
 
-          <a class="btn btn-primary btn-block" href="#contact" id="booking-cta">預約免費諮詢
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <a class="btn btn-primary btn-block" href="#contact" id="booking-cta">預約免費諮詢 <i class="fi fi-rr-arrow-small-right" aria-hidden="true"></i>
           </a>
         </div>
       </div>
@@ -352,87 +369,91 @@
     <section id="about" class="section container about">
       <div class="section-intro section-intro-wide">
         <span class="kicker">ABOUT US</span>
-        <h2>關於 Vividoo</h2>
-        <p>Vividoo 專注於為中小企業提供辦公室自動化解決方案，透過「非侵入式」自動化技術，打造 24 小時全年無休的超級數位員工，解決高重複性、低價值的標準化作業流程，釋放企業潛力，驅動營運革命。</p>
+        <h2><span class="ph">關於</span> <span class="ph">Vividoo</span></h2>
+        <p><span class="ph">Vividoo 專注於為中小企業</span><span class="ph">提供辦公室自動化解決方案，</span><span class="ph">透過「非侵入式」自動化技術，</span><span class="ph">打造 24 小時全年無休的超級數位員工，</span><span class="ph">解決高重複性、低價值的標準化作業流程，</span><span class="ph">釋放企業潛力，</span><span class="ph">驅動營運革命。</span></p>
       </div>
       <dl class="about-stats">
-        <div><dt>400%</dt><dd>效率提升</dd></div>
-        <div><dt>3 週</dt><dd>快速交付</dd></div>
-        <div><dt>24 小時</dt><dd>數位員工</dd></div>
+        <div data-reveal><span class="icon-chip"><i class="fi fi-rr-rocket-lunch" aria-hidden="true"></i></span><dt data-count>400%</dt><dd>效率提升</dd></div>
+        <div data-reveal><span class="icon-chip"><i class="fi fi-rr-time-fast" aria-hidden="true"></i></span><dt data-count>3 週</dt><dd>快速交付</dd></div>
+        <div data-reveal><span class="icon-chip"><i class="fi fi-rr-clock-three" aria-hidden="true"></i></span><dt data-count>24 小時</dt><dd>數位員工</dd></div>
       </dl>
 
       <div class="about-grid">
         <div class="about-item">
-          <h3>我們的使命</h3>
+          <h3><span class="icon-chip"><i class="fi fi-rr-target" aria-hidden="true"></i></span><span class="heading-copy"><span class="ph">我們的使命</span></span></h3>
           <p>為中小企業「解放」人力，提升員工價值。透過非侵入式自動化技術，讓團隊專注於真正有價值的創新工作，實現企業營運效率的革命性提升。</p>
         </div>
         <div class="about-item">
-          <h3>我們的願景</h3>
+          <h3><span class="icon-chip"><i class="fi fi-rr-bulb" aria-hidden="true"></i></span><span class="heading-copy"><span class="ph">我們的願景</span></span></h3>
           <p>成為台灣領先的辦公室自動化服務提供商，推動中小企業數位轉型，讓每個企業都能擁有自己的 24 小時數位員工，提升台灣整體營運效率。</p>
         </div>
       </div>
 
       <div class="value-prop">
         <div class="value-copy">
-          <h3>一個您無法拒絕的價值主張</h3>
+          <h3><span class="ph">一個您無法拒絕的</span><span class="ph">價值主張</span></h3>
           <p>為您省下 1/5 的內勤工時，只需支付不到 1/4 的節省金額。</p>
         </div>
         <dl class="value-stats">
-          <div><dt>300%+</dt><dd><strong>投資報酬率</strong>第一天起就保證獲利</dd></div>
-          <div><dt>75%</dt><dd><strong>節省成本</strong>直接轉化為您的淨利潤</dd></div>
-          <div><dt>即時</dt><dd><strong>立即見效</strong>錯過一天，等於少賺一天</dd></div>
+          <div data-reveal><span class="icon-chip"><i class="fi fi-rr-chart-line-up" aria-hidden="true"></i></span><dt data-count>300%+</dt><dd><strong>投資報酬率</strong>第一天起就保證獲利</dd></div>
+          <div data-reveal><span class="icon-chip"><i class="fi fi-rr-coins" aria-hidden="true"></i></span><dt data-count>75%</dt><dd><strong>節省成本</strong>直接轉化為您的淨利潤</dd></div>
+          <div><span class="icon-chip"><i class="fi fi-rr-time-fast" aria-hidden="true"></i></span><dt>即時</dt><dd><strong>立即見效</strong>錯過一天，等於少賺一天</dd></div>
         </dl>
       </div>
 
       <div class="team">
-        <h3>創辦團隊</h3>
+        <h3><span class="ph">創辦團隊</span></h3>
         <p class="team-intro">能化繁為簡、做出成效保證的專業團隊，「商業思維」與「頂尖技術」的完美結合。</p>
         <div class="team-grid">
           <article class="team-card">
-            <h4>劉漢意（Allison）</h4>
+            <span class="team-monogram" aria-hidden="true">A</span>
+            <h4><span class="ph">劉漢意</span><span class="ph">（Allison）</span></h4>
             <span class="team-role">CEO</span>
             <p>IBM 資訊軟體專業，中小企業主，豐富的人脈，最懂客戶痛點的「翻譯官」。</p>
           </article>
           <article class="team-card">
-            <h4>蔡易達（Yida）</h4>
+            <span class="team-monogram" aria-hidden="true">Y</span>
+            <h4><span class="ph">蔡易達</span><span class="ph">（Yida）</span></h4>
             <span class="team-role">AI 技術總監</span>
             <p>AI 技術的魔法師，將複雜技術變為可用工具的「轉化器」。</p>
           </article>
           <article class="team-card">
-            <h4>歐沐霖（Grand）</h4>
+            <span class="team-monogram" aria-hidden="true">G</span>
+            <h4><span class="ph">歐沐霖</span><span class="ph">（Grand）</span></h4>
             <span class="team-role">系統架構師</span>
             <p>系統串接的架構師，打造技術核心的「定海神針」，及頂大優秀資訊團隊。</p>
           </article>
         </div>
-        <p class="team-note">我們正在尋找志同道合的投資夥伴，實現辦公室自動化的願景，共同為提升台灣營運效率一起努力。豐厚推薦獎勵等您加入！</p>
+        <p class="team-note"><span class="icon-chip"><i class="fi fi-rr-handshake" aria-hidden="true"></i></span>我們正在尋找志同道合的投資夥伴，實現辦公室自動化的願景，共同為提升台灣營運效率一起努力。豐厚推薦獎勵等您加入！</p>
       </div>
     </section>
 
     <!-- CONTACT -->
     <section id="contact" class="section container">
+      <img class="contact-banner" src="assets/img/contact.jpg" width="1672" height="941" loading="lazy" decoding="async" alt="深青綠玻璃球置於白色起伏絲綢般曲面上，背景留白">
       <div class="planner">
         <div class="planner-copy">
           <span class="kicker kicker-blush">CONTACT</span>
-          <h2>立即預約免費諮詢</h2>
+          <h2><span class="ph">立即預約</span><span class="ph">免費諮詢</span></h2>
           <p>三週快速交付，保證營運成效。錯過一天就等於少賺一天！</p>
           <dl class="contact-info">
-            <div><dt>創辦人直線</dt><dd><a href="tel:0937079175">0937-079-175</a></dd></div>
-            <div><dt>Email</dt><dd><a href="mailto:allisonliu33@gmail.com">allisonliu33@gmail.com</a></dd></div>
-            <div><dt>官方網站</dt><dd><a href="https://www.vividoo.com.tw" target="_blank" rel="noopener noreferrer">www.vividoo.com.tw</a></dd></div>
-            <div><dt>回覆時間</dt><dd>24 小時內專業回覆，週一至週五優先處理</dd></div>
+            <div><span class="icon-chip"><i class="fi fi-rr-phone-call" aria-hidden="true"></i></span><dt>創辦人直線</dt><dd><a href="tel:0937079175">0937-079-175</a></dd></div>
+            <div><span class="icon-chip"><i class="fi fi-rr-envelope" aria-hidden="true"></i></span><dt>Email</dt><dd><a href="mailto:allisonliu33@gmail.com">allisonliu33@gmail.com</a></dd></div>
+            <div><span class="icon-chip"><i class="fi fi-rr-globe" aria-hidden="true"></i></span><dt>官方網站</dt><dd><a href="https://www.vividoo.com.tw" target="_blank" rel="noopener noreferrer">www.vividoo.com.tw</a></dd></div>
+            <div><span class="icon-chip"><i class="fi fi-rr-clock-three" aria-hidden="true"></i></span><dt>回覆時間</dt><dd>24 小時內專業回覆，週一至週五優先處理</dd></div>
           </dl>
         </div>
         <form class="planner-form contact-form" id="contact-form" novalidate>
-          <h3>免費諮詢預約</h3>
+          <h3><span class="icon-chip"><i class="fi fi-rr-comment-alt" aria-hidden="true"></i></span><span class="heading-copy"><span class="ph">免費諮詢</span><span class="ph">預約</span></span></h3>
           <div class="form-row">
             <div class="form-field">
               <label for="cf-name">姓名 <span class="req" aria-hidden="true">*</span></label>
-              <input id="cf-name" name="name" type="text" autocomplete="name" placeholder="請輸入您的姓名" required>
+              <input id="cf-name" name="name" type="text" autocomplete="name" aria-describedby="cf-name-error" placeholder="請輸入您的姓名" required>
               <span class="field-error" id="cf-name-error" role="alert"></span>
             </div>
             <div class="form-field">
               <label for="cf-email">電子郵件 <span class="req" aria-hidden="true">*</span></label>
-              <input id="cf-email" name="email" type="email" autocomplete="email" placeholder="請輸入您的電子郵件" required>
+              <input id="cf-email" name="email" type="email" autocomplete="email" aria-describedby="cf-email-error" placeholder="請輸入您的電子郵件" required>
               <span class="field-error" id="cf-email-error" role="alert"></span>
             </div>
           </div>
@@ -468,7 +489,7 @@
             <label for="cf-message">詳細需求</label>
             <textarea id="cf-message" name="message" rows="4" placeholder="請詳細描述您目前的工作流程痛點，或想要自動化的作業項目，我們將為您提供專業的自動化建議..."></textarea>
           </div>
-          <button class="btn btn-primary btn-block" type="submit">立即預約免費諮詢</button>
+          <button class="btn btn-primary btn-block" type="submit">立即預約免費諮詢 <i class="fi fi-rr-arrow-small-right" aria-hidden="true"></i></button>
           <p class="form-note" id="cf-status" aria-live="polite">送出後會開啟您的郵件程式，寄到 allisonliu33@gmail.com。</p>
         </form>
       </div>
@@ -481,9 +502,11 @@
         <span class="footer-logo">Vividoo</span>
         <strong class="footer-tagline">打造百萬級全年無休超級數位員工</strong>
         <p>Vividoo 專注於為中小企業提供辦公室自動化解決方案，透過「非侵入式」自動化技術，解放人力、提升員工價值，釋放企業潛力，驅動營運革命。</p>
-        <p>創辦人直線：<a href="tel:0937079175">0937-079-175</a><br>
-          Email：<a href="mailto:allisonliu33@gmail.com">allisonliu33@gmail.com</a><br>
-          官網：<a href="https://www.vividoo.com.tw" target="_blank" rel="noopener noreferrer">www.vividoo.com.tw</a></p>
+        <p>
+          <span class="footer-contact-line"><i class="fi fi-rr-phone-call" aria-hidden="true"></i> 創辦人直線：<a href="tel:0937079175">0937-079-175</a></span>
+          <span class="footer-contact-line"><i class="fi fi-rr-envelope" aria-hidden="true"></i> Email：<a href="mailto:allisonliu33@gmail.com">allisonliu33@gmail.com</a></span>
+          <span class="footer-contact-line"><i class="fi fi-rr-globe" aria-hidden="true"></i> 官網：<a href="https://www.vividoo.com.tw" target="_blank" rel="noopener noreferrer">www.vividoo.com.tw</a></span>
+        </p>
         <p class="footer-promise">三週快速交付 · 保證營運成效</p>
       </div>
       <div class="footer-cols">
@@ -504,7 +527,7 @@
         </div>
       </div>
     </div>
-    <div class="container footer-bottom">© <span id="year">2026</span> Vividoo. All rights reserved. | 400% 效率提升保證</div>
+    <div class="container footer-bottom">© <span id="year">2026</span> Vividoo. All rights reserved. | 400% 效率提升保證 <span class="footer-attribution">Uicons by <a href="https://www.flaticon.com/uicons" target="_blank" rel="noopener noreferrer">Flaticon</a></span></div>
   </footer>
 
   <script src="script.js"></script>

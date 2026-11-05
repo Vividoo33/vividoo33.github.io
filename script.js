@@ -1,6 +1,7 @@
 // Vividoo — AI 技能菜單、課程、預約試算、聯絡表單
 (() => {
   'use strict';
+  document.documentElement.classList.replace('no-js', 'js');
 
   const GROUPS = [
     { id: 'data', title: '數據分析' },
@@ -278,6 +279,107 @@
     if (text !== undefined) node.textContent = text;
     return node;
   };
+  const icon = (name) => {
+    const node = el('i', `fi fi-rr-${name}`);
+    node.setAttribute('aria-hidden', 'true');
+    return node;
+  };
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const animatedCounts = new WeakSet();
+  const animateCount = (node) => {
+    if (animatedCounts.has(node)) return;
+    const finalText = node.textContent.trim();
+    const match = finalText.match(/^(\d+)(.*)$/u);
+    if (!match || reduceMotion) return;
+    animatedCounts.add(node);
+    const target = Number(match[1]);
+    const suffix = match[2];
+    const start = performance.now();
+    const duration = 950;
+    node.textContent = `0${suffix}`;
+    const tick = (now) => {
+      const progress = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      node.textContent = progress === 1 ? finalText : `${Math.round(target * eased)}${suffix}`;
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  const revealTargets = document.querySelectorAll('.section-intro, .booking-copy, .booking-card, .about-grid > *, .value-prop, .team-card, .planner-copy, .planner-form, .contact-banner, .course-tabs-shell, .case-card');
+  revealTargets.forEach((node) => node.setAttribute('data-reveal', ''));
+  const staggerGridSelector = '.module-grid, .service-grid, .skill-grid, .course-grid, .case-grid, .about-grid, .team-grid';
+  const revealObserver = !reduceMotion && 'IntersectionObserver' in window
+    ? new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        const countNode = entry.target.matches('[data-count]') ? entry.target : entry.target.querySelector('[data-count]');
+        if (countNode) animateCount(countNode);
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -48px 0px' })
+    : null;
+  const observeReveal = (root = document) => {
+    document.querySelectorAll(staggerGridSelector).forEach((gridRoot) => {
+      gridRoot.querySelectorAll(':scope > *').forEach((child, index) => {
+        child.setAttribute('data-reveal', '');
+        child.style.setProperty('--reveal-delay', `${index * 60}ms`);
+      });
+    });
+    const nodes = [];
+    if (root instanceof Element && root.matches('[data-reveal]')) nodes.push(root);
+    nodes.push(...root.querySelectorAll('[data-reveal]'));
+    nodes.forEach((node) => {
+      if (node.classList.contains('is-visible')) return;
+      if (revealObserver) revealObserver.observe(node);
+      else node.classList.add('is-visible');
+    });
+  };
+  observeReveal();
+
+  // Header surface and current section indication
+  const header = document.querySelector('.site-header');
+  const syncHeader = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
+  syncHeader();
+  window.addEventListener('scroll', syncHeader, { passive: true });
+  const navLinks = [...document.querySelectorAll('.site-nav a[href^="#"]:not(.btn)')];
+  if ('IntersectionObserver' in window) {
+    const sectionObserver = new IntersectionObserver((entries) => {
+      const active = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!active) return;
+      navLinks.forEach((link) => {
+        if (link.getAttribute('href') === `#${active.target.id}`) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    }, { rootMargin: '-22% 0px -64% 0px', threshold: [0, 0.1, 0.25, 0.5] });
+    navLinks.forEach((link) => {
+      const section = document.querySelector(link.getAttribute('href'));
+      if (section) sectionObserver.observe(section);
+    });
+  }
+
+  // Hero image entrance and restrained scroll parallax
+  const heroFrame = document.querySelector('.hero-media');
+  const heroMotion = document.querySelector('.hero-image-motion');
+  const heroImage = heroFrame?.querySelector('img');
+  if (heroFrame && heroImage) {
+    const markHeroLoaded = () => heroFrame.classList.add('is-loaded');
+    if (heroImage.complete) markHeroLoaded();
+    else heroImage.addEventListener('load', markHeroLoaded, { once: true });
+    if (!reduceMotion && heroMotion) {
+      let heroRaf = 0;
+      const updateHeroParallax = () => {
+        heroRaf = 0;
+        const offset = Math.max(0, window.scrollY - heroFrame.offsetTop);
+        heroMotion.style.transform = `translate3d(0, ${-Math.min(40, offset * 0.12)}px, 0)`;
+      };
+      window.addEventListener('scroll', () => {
+        if (!heroRaf) heroRaf = requestAnimationFrame(updateHeroParallax);
+      }, { passive: true });
+      updateHeroParallax();
+    }
+  }
 
   // ---------- AI 技能菜單 ----------
   const sectionsRoot = document.getElementById('skill-sections');
@@ -306,7 +408,7 @@
     card.setAttribute('aria-haspopup', 'dialog');
     card.append(el('span', 'skill-no', num), el('span', 'skill-title', s.title));
     const arrow = el('span', 'skill-arrow');
-    arrow.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+    arrow.append(icon('arrow-small-right'));
     card.append(arrow);
     card.addEventListener('click', () => openSkill(s, num));
     return card;
@@ -316,17 +418,19 @@
   document.getElementById('sd-cta').addEventListener('click', () => dialog.close());
   dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
 
-  // 16 個技能放在同一個等寬等高的網格（4 × 4），類別用左側色條區分
+  // 32 個技能放在同一個等寬等高的網格，類別用底色與外框區分
   const ordered = GROUPS.flatMap((g) => SKILLS.filter((s) => s.group === g.id));
   const grid = el('div', 'skill-grid');
   const cards = ordered.map((s, i) => {
     const card = renderCard(s, i + 1);
     card.dataset.group = s.group;
+    card.setAttribute('data-reveal', '');
     card.setAttribute('aria-label', `${String(i + 1).padStart(2, '0')} ${s.title}（${groupTitle[s.group]}）`);
     grid.append(card);
     return card;
   });
   sectionsRoot.append(grid);
+  observeReveal(grid);
 
   const applyFilter = (group) => {
     cards.forEach((c) => { c.hidden = group !== 'all' && c.dataset.group !== group; });
@@ -354,13 +458,13 @@
   // ---------- 預約試算 ----------
   const count = (ids) => SKILLS.filter((s) => ids.includes(s.group)).length;
   const PLANS = [
-    { id: 'ecom', label: '電商技能包', sub: '數據・財務・廣告・客服', ref: `${count(['data', 'finance', 'ads', 'product', 'service'])} 個電商技能` },
-    { id: 'office', label: '辦公室技能包', sub: '會議・週報・簡報・SOP', ref: `${count(['office', 'personal'])} 個辦公室與個人助理技能` },
-    { id: 'edu', label: '教育訓練', sub: '工作坊・實戰營', ref: '帶團隊自己做出技能' }
+    { id: 'ecom', label: '電商技能包', sub: '數據・財務・廣告・客服', ref: `${count(['data', 'finance', 'ads', 'product', 'service'])} 個電商技能`, icon: 'shopping-cart' },
+    { id: 'office', label: '辦公室技能包', sub: '會議・週報・簡報・SOP', ref: `${count(['office', 'personal'])} 個辦公室與個人助理技能`, icon: 'briefcase' },
+    { id: 'edu', label: '教育訓練', sub: '工作坊・實戰營', ref: '帶團隊自己做出技能', icon: 'graduation-cap' }
   ];
   const MODES = [
-    { id: 'onsite', label: '到府實體' },
-    { id: 'online', label: '線上直播' }
+    { id: 'onsite', label: '到府實體', icon: 'building' },
+    { id: 'online', label: '線上直播', icon: 'play-alt' }
   ];
   const SIZE = { min: 1, max: 500, step: 1 };
   const booking = { plan: 'ecom', mode: 'onsite', size: 12 };
@@ -375,14 +479,19 @@
     const btn = el('button', 'tile');
     btn.type = 'button';
     btn.dataset.id = p.id;
-    btn.append(el('strong', null, p.label), el('span', null, p.sub));
+    const chip = el('span', 'icon-chip tile-icon');
+    chip.append(icon(p.icon));
+    const copy = el('span', 'tile-copy');
+    copy.append(el('strong', null, p.label), el('span', null, p.sub));
+    btn.append(chip, copy);
     btn.addEventListener('click', () => { booking.plan = p.id; renderBooking(); });
     planGroup.append(btn);
   });
   MODES.forEach((m) => {
-    const btn = el('button', 'pill', m.label);
+    const btn = el('button', 'pill');
     btn.type = 'button';
     btn.dataset.id = m.id;
+    btn.append(icon(m.icon), el('span', null, m.label));
     btn.addEventListener('click', () => { booking.mode = m.id; renderBooking(); });
     modeGroup.append(btn);
   });
@@ -447,20 +556,77 @@
   const courseGrid = document.getElementById('course-grid');
   const courseCount = document.getElementById('course-count');
   const courseTabs = document.querySelectorAll('[data-course]');
-
-  const showCourses = (key) => {
+  const courseTabsRoot = document.querySelector('.course-tabs');
+  const courseIndicator = document.querySelector('.course-indicator');
+  let activeCourse = null;
+  let courseSwapTimer = 0;
+  const syncCourseIndicator = (key) => {
+    if (!courseTabsRoot || !courseIndicator) return;
+    courseTabsRoot.dataset.activeCourse = key;
+  };
+  const renderCourses = (key, staggerCards = true) => {
     courseGrid.replaceChildren(...COURSES[key].map(([tag, title, desc], i) => {
       const card = el('article', 'course-card');
+      card.setAttribute('data-reveal', '');
+      if (!staggerCards) card.classList.add('is-visible');
       const top = el('div', 'course-top');
-      top.append(el('span', 'course-no', String(i + 1).padStart(2, '0')), el('span', 'course-tag', `#${tag}`));
-      card.append(top, el('h3', null, title), el('p', null, desc));
+      const number = el('span', 'course-number');
+      const chip = el('span', 'icon-chip course-icon');
+      chip.append(icon('book-open-cover'));
+      number.append(el('span', 'course-no', String(i + 1).padStart(2, '0')), chip);
+      top.append(number, el('span', 'course-tag', `#${tag}`));
+      const courseTitle = el('h3');
+      if (title.includes('：')) {
+        const phrases = title.split('：');
+        courseTitle.replaceChildren(...phrases.map((phrase, index) =>
+          el('span', 'ph', `${phrase}${index < phrases.length - 1 ? '：' : ''}`)
+        ));
+      } else {
+        courseTitle.textContent = title;
+      }
+      card.append(top, courseTitle, el('p', null, desc));
       return card;
     }));
+    observeReveal(courseGrid);
+  };
+  const showCourses = (key) => {
+    const shouldAnimate = activeCourse !== null && activeCourse !== key && !reduceMotion;
+    window.clearTimeout(courseSwapTimer);
+    if (shouldAnimate) {
+      courseGrid.classList.add('is-switching');
+      courseSwapTimer = window.setTimeout(() => {
+        renderCourses(key, false);
+        courseGrid.classList.remove('is-switching');
+      }, 160);
+    } else {
+      renderCourses(key);
+      courseGrid.classList.remove('is-switching');
+    }
+    activeCourse = key;
     courseCount.textContent = `${COURSE_LABEL[key]}：共 ${COURSES[key].length} 門課程`;
     courseTabs.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.course === key)));
+    requestAnimationFrame(() => syncCourseIndicator(key));
   };
   courseTabs.forEach((b) => b.addEventListener('click', () => showCourses(b.dataset.course)));
+  window.addEventListener('resize', () => { if (activeCourse) syncCourseIndicator(activeCourse); }, { passive: true });
   showCourses('online');
+
+  // Promote each case result while keeping its full sentence and label intact.
+  document.querySelectorAll('.case-card').forEach((card) => {
+    const result = card.querySelector('.case-result');
+    const resultLabel = card.querySelector('dt:last-of-type');
+    const percent = result?.textContent.match(/\d+%/u)?.[0];
+    if (!result || !resultLabel || !percent) return;
+    const outcome = el('div', 'case-outcome');
+    const casePercent = el('span', 'case-percent');
+    casePercent.append(icon('chart-line-up'), document.createTextNode(` ${percent}`));
+    outcome.append(el('span', 'case-result-label', resultLabel.textContent), casePercent);
+    const sentence = el('p', 'case-outcome-copy', result.textContent);
+    outcome.append(sentence);
+    resultLabel.remove();
+    result.remove();
+    card.insertBefore(outcome, card.firstElementChild);
+  });
 
   // ---------- 聯絡表單：驗證後開啟郵件程式寄到創辦人信箱（網站本身沒有後端）----------
   const CONTACT_EMAIL = 'allisonliu33@gmail.com';
