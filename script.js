@@ -306,7 +306,7 @@
     };
     requestAnimationFrame(tick);
   };
-  const revealTargets = document.querySelectorAll('.section-intro, .booking-copy, .booking-card, .about-grid > *, .value-prop, .team-card, .planner-copy, .planner-form, .contact-banner, .course-tabs-shell, .case-card');
+  const revealTargets = document.querySelectorAll('.section-intro, .booking-copy, .booking-card, .about-grid > *, .value-prop, .team-card, .planner-copy, .planner-form, .course-tabs-shell, .case-card');
   revealTargets.forEach((node) => node.setAttribute('data-reveal', ''));
   const staggerGridSelector = '.module-grid, .service-grid, .skill-grid, .course-grid, .case-grid, .about-grid, .team-grid';
   const revealObserver = !reduceMotion && 'IntersectionObserver' in window
@@ -320,6 +320,8 @@
       });
     }, { threshold: 0.14, rootMargin: '0px 0px -48px 0px' })
     : null;
+  let revealFallbackActive = !revealObserver;
+  const revealAll = () => document.querySelectorAll('[data-reveal]').forEach((node) => node.classList.add('is-visible'));
   const observeReveal = (root = document) => {
     document.querySelectorAll(staggerGridSelector).forEach((gridRoot) => {
       gridRoot.querySelectorAll(':scope > *').forEach((child, index) => {
@@ -332,11 +334,45 @@
     nodes.push(...root.querySelectorAll('[data-reveal]'));
     nodes.forEach((node) => {
       if (node.classList.contains('is-visible')) return;
+      if (revealFallbackActive) {
+        node.classList.add('is-visible');
+        return;
+      }
       if (revealObserver) revealObserver.observe(node);
       else node.classList.add('is-visible');
     });
   };
   observeReveal();
+
+  const revealOnDomContentLoaded = () => {
+    const nodes = [...document.querySelectorAll('[data-reveal]')];
+    if (reduceMotion || !revealObserver) {
+      revealFallbackActive = true;
+      revealAll();
+      return;
+    }
+
+    const aboveFold = nodes.filter((node) => node.getBoundingClientRect().top < window.innerHeight);
+    requestAnimationFrame(() => aboveFold.forEach((node) => node.classList.add('is-visible')));
+    window.setTimeout(() => {
+      if (!document.querySelector('[data-reveal]:not(.is-visible)')) return;
+      revealFallbackActive = true;
+      revealAll();
+    }, 2500);
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', revealOnDomContentLoaded, { once: true });
+  } else {
+    revealOnDomContentLoaded();
+  }
+  document.addEventListener('focusin', (event) => {
+    if (!(event.target instanceof Element)) return;
+    let node = event.target.closest('[data-reveal]');
+    while (node) {
+      node.classList.add('is-visible');
+      node = node.parentElement?.closest('[data-reveal]') ?? null;
+    }
+  });
 
   // Header surface and current section indication
   const header = document.querySelector('.site-header');
@@ -357,28 +393,6 @@
       const section = document.querySelector(link.getAttribute('href'));
       if (section) sectionObserver.observe(section);
     });
-  }
-
-  // Hero image entrance and restrained scroll parallax
-  const heroFrame = document.querySelector('.hero-media');
-  const heroMotion = document.querySelector('.hero-image-motion');
-  const heroImage = heroFrame?.querySelector('img');
-  if (heroFrame && heroImage) {
-    const markHeroLoaded = () => heroFrame.classList.add('is-loaded');
-    if (heroImage.complete) markHeroLoaded();
-    else heroImage.addEventListener('load', markHeroLoaded, { once: true });
-    if (!reduceMotion && heroMotion) {
-      let heroRaf = 0;
-      const updateHeroParallax = () => {
-        heroRaf = 0;
-        const offset = Math.max(0, window.scrollY - heroFrame.offsetTop);
-        heroMotion.style.transform = `translate3d(0, ${-Math.min(40, offset * 0.12)}px, 0)`;
-      };
-      window.addEventListener('scroll', () => {
-        if (!heroRaf) heroRaf = requestAnimationFrame(updateHeroParallax);
-      }, { passive: true });
-      updateHeroParallax();
-    }
   }
 
   // ---------- AI 技能菜單 ----------
