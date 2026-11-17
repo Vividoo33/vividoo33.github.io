@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 100" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="champagne" x2="0" y2="1">
+      <stop stop-color="#ad8649"/>
+      <stop offset=".27" stop-color="#d7b879"/>
+      <stop offset=".42" stop-color="#e6cb96"/>
+      <stop offset=".7" stop-color="#bc9457"/>
+      <stop offset="1" stop-color="#ad8649"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#champagne)" d="M14 0C6.3 0 0 4 0 11V88C0 94 1.2 98 2 100C1.7 92 2 80 2.6 66C3 53 3.3 43 3.3 33C3.3 15 1.6 1 14 1Z"/>
+</svg>

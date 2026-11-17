@@ -1,0 +1,40 @@
+:root {
+  --course-gold: linear-gradient(#c6a469, #d2b47e 45%, #bf9d61);
+}
+main > .hero {
+  background: radial-gradient(ellipse at 86% 0%, #23736e, transparent 52%), #082f32;
+  color: #fffaf0;
+  border-bottom: 2px solid #c6a469;
+  border-image: var(--course-gold) 1;
+}
+main > .hero h1 { color: #fffaf0; font-size: clamp(36px, 4.5vw, 62px); }
+main > .hero .eyebrow, main > .hero .lead { color: #e7f4ef; }
+main > .hero .lead { font-size: clamp(17px, 2vw, 20px); }
+main > .hero .actions .primary {
+  background: linear-gradient(150deg, #dfbf80, #efd7a4 37%, #c5a064 68%, #d8b77c);
+  color: #252318;
+  border-color: #b58f53;
+}
+main > .hero .actions .button:not(.primary) {
+  background: transparent;
+  color: #fffaf0;
+  border-color: #85b9ae;
+}
+
+.service-group {
+  background: #eaf4ef;
+  border-radius: 14px;
+  padding: clamp(14px, 2.4vw, 25px);
+  margin-block: 14px;
+}
+.service-group:nth-of-type(even), main > .contact {
+  background: #f4ead7;
+}
+.service-group > article {
+  background: #fffdf8;
+  border: 1px solid #d8e2dc;
+  border-top: 2px solid #c6a469;
+  border-radius: 10px;
+}
+main > .contact { color: #063e39; }
+main > .contact p { color: #31534f; }

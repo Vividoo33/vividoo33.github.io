@@ -1,0 +1,165 @@
+/* ViviDoo 全站共用：頁首、內容寬度、頁尾。
+   每頁在 </head> 前最後載入，六頁用同一套。 */
+:root { --site-gutter: 24px; }
+
+.wrap {
+  width: min(1120px, calc(100% - var(--site-gutter) * 2));
+  margin-inline: auto;
+}
+
+/* 頁首 */
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid #dce7e2;
+}
+.site-header .site-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 28px;
+  min-height: 72px;
+  padding: 0;
+}
+.site-header .site-logo {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  flex: none;
+}
+.site-header .site-logo img {
+  display: block;
+  width: 126px;
+  height: 40px;
+  max-width: none;
+  margin: 0;
+  object-fit: contain;
+}
+.site-header .site-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 26px;
+  margin-inline-start: auto;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.site-header .site-nav a {
+  padding: 10px 0;
+  border-bottom: 2px solid transparent;
+  color: #31534f;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.site-header .site-nav a:hover { color: #063e39; }
+.site-header .site-nav a[aria-current="page"] {
+  color: #063e39;
+  border-bottom-color: #c6a469;
+  text-decoration: none;
+}
+.site-header .site-contact,
+.site-cta .site-contact {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  height: 44px;
+  padding: 0 20px;
+  border: 1px solid #b58f53;
+  border-radius: 8px;
+  background: linear-gradient(150deg, #dfbf80, #efd7a4 37%, #c5a064 68%, #d8b77c);
+  box-shadow: none;
+  color: #252318;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.site-header a:focus-visible,
+.site-footer a:focus-visible,
+.site-cta a:focus-visible {
+  outline: 3px solid #008679;
+  outline-offset: 3px;
+}
+
+/* 首頁底部洽詢區 */
+.site-cta {
+  background: #f4ead7;
+  border-top: 2px solid #c6a469;
+  color: #063e39;
+  padding: 40px 0 34px;
+}
+.site-cta h2 { margin: 0 0 6px; }
+.site-cta p { margin: 0 0 16px; color: #31534f; }
+.site-cta .site-contact { height: 48px; padding: 0 24px; font-size: 16px; }
+
+/* 頁尾：公司資訊 */
+footer.site-footer {
+  background: #f4ead7;
+  border: 0;
+  border-top: 1px solid #dcc9a0;
+  border-image: none;
+  color: #063e39;
+  padding: 28px 0 34px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.site-footer .site-footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px 48px;
+}
+.site-footer .site-logo {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: #fff;
+}
+.site-footer .site-logo img {
+  display: block;
+  width: 107px;
+  height: 34px;
+  max-width: none;
+  margin: 0;
+}
+.site-footer .site-company { margin: 0 0 2px; font-weight: 700; color: #063e39; }
+.site-footer address { font-style: normal; color: #31534f; }
+.site-footer address a { color: #063e39; font-weight: 700; overflow-wrap: anywhere; }
+
+/* 手機：頁首兩列 */
+@media (max-width: 760px) {
+  .site-header .site-bar {
+    flex-wrap: wrap;
+    gap: 0;
+    min-height: 0;
+  }
+  .site-header .site-logo { order: 1; height: 60px; }
+  .site-header .site-logo img { width: 107px; height: 34px; }
+  .site-header .site-contact {
+    order: 2;
+    margin-inline-start: auto;
+    padding: 0 16px;
+  }
+  .site-header .site-nav {
+    order: 3;
+    flex: 0 0 auto;
+    width: calc(100% + var(--site-gutter) * 2);
+    margin-inline: calc(var(--site-gutter) * -1);
+    padding-inline: var(--site-gutter);
+    box-sizing: border-box;
+    height: 48px;
+    justify-content: space-between;
+    gap: 14px;
+    border-top: 1px solid #dce7e2;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+}
+@media (max-width: 540px) {
+  :root { --site-gutter: 16px; }
+}

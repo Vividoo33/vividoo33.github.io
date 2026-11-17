@@ -1,0 +1,117 @@
+:root {
+  --brand-deep: #034b49;
+  --brand-teal: #006e67;
+  --brand-bright: #00b4aa;
+  --ink: #123c3b;
+  --paper: #faf9f5;
+  --hero: #edf5f2;
+  --champagne: #dfbf83;
+  --champagne-line: #ad8649;
+}
+
+body { background: var(--paper); color: var(--ink); }
+header { background: #fff; }
+.hero-band, main > .hero {
+  background: radial-gradient(ellipse at 86% 0%, var(--brand-teal), transparent 65%), var(--brand-deep);
+}
+.hero-band figure::before {
+  border-color: color-mix(in srgb, var(--brand-bright) 55%, transparent);
+}
+.hero h1 em { text-decoration-color: var(--champagne); }
+.hero-band .button, footer .button, .primary {
+  background: var(--champagne);
+  color: #252318;
+}
+.experience-band, .proof, .contact { background: var(--hero); }
+.experience-band { border-top-color: var(--champagne-line); }
+.experience-label, .category { color: var(--brand-teal); }
+#services .card, footer, .contact { border-top-color: var(--champagne-line); }
+nav [aria-current="page"] { text-decoration-color: var(--champagne-line); }
+
+/* Brighter teal from the logo, used on light surfaces and small details. */
+:root { --aqua-wash: #e1f6f2; }
+.experience-band, .contact { background: var(--aqua-wash); }
+.category {
+  justify-self: start;
+  align-self: start;
+  padding: 3px 9px;
+  border-radius: 5px;
+  background: var(--aqua-wash);
+}
+.hero .button:not(.primary) { border-color: #63d4c8; }
+
+/* One continuous corner: a fine top edge with a softly tapered left edge. */
+.course {
+  border: 0;
+  border-radius: 14px 8px 8px 8px;
+}
+.course::before {
+  inset: 0;
+  width: auto;
+  border-radius: inherit;
+  background: none;
+  border-top: 1px solid var(--champagne-line);
+}
+.course::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 14px;
+  pointer-events: none;
+  background: url("./gold-corner.svg") left top / 14px 100% no-repeat;
+}
+
+/* Keep the brighter blue-green between the deep teal opening and closing. */
+:root {
+  --aqua-panel: #bceee7;
+  --gold-sheen: linear-gradient(112deg, #c9a267, #e4c487 37%, #f5e3b9 49%, #dfbd82 62%, #cda66a);
+}
+.experience-band, .proof { background: var(--aqua-panel); }
+main > .list:first-of-type,
+main > .hero + .list {
+  background: var(--aqua-panel);
+  box-shadow: 0 0 0 100vmax var(--aqua-panel);
+  clip-path: inset(0 -100vmax);
+}
+.hero-band .button, footer .button, .primary { background: var(--gold-sheen); }
+footer, .contact {
+  color: #f6fffc;
+  background: var(--brand-deep);
+  border-top: 2px solid transparent;
+  border-image: var(--gold-sheen) 1;
+}
+footer p, .contact p { color: #d9f2ed; }
+
+.system-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .9fr);
+  align-items: center;
+  gap: clamp(24px, 5vw, 64px);
+}
+.system-panel {
+  color: #f6fffc;
+  padding: clamp(17px, 3vw, 30px);
+  border: 1px solid #94d8ca55;
+  border-radius: 20px;
+  background: #ffffff0e;
+}
+.system-panel h2 { margin: 0 0 15px; font-size: 1.15rem; color: #a9eee3; }
+.system-steps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+}
+.system-steps li, .system-result {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #ffffff10;
+}
+.system-result {
+  background: url("./gold-corner.svg") left top / 14px 100% no-repeat, #ffffff10;
+  padding-inline-start: 19px;
+}
+.system-panel .system-result p { margin: 4px 0 0; color: #dbf3ef; }
+@media (max-width: 720px) { .system-hero { grid-template-columns: 1fr; } }
